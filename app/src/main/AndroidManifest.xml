@@ -2,14 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+<!--    <uses-permission android:name="android.permission.INTERNET" />-->
 <!--    <uses-feature-->
 <!--        android:name="android.hardware.camera"-->
 <!--        android:required="false" />-->
 <!--    <uses-permission android:name="android.permission.CAMERA" />-->
 
+<!--    android:enableOnBackInvokedCallback="true"-->
     <application
+
         android:allowBackup="true"
+        android:name=".DespensaApp"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -17,7 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Scanner"
-        tools:targetApi="31">
+        tools:targetApi="33">
 
         <!-- Configure Google Play Services to automatically download
         the scanner module while your app is installed from the Play Store. -->
@@ -26,7 +29,7 @@
             android:value="barcode_ui" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.view.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Scanner">

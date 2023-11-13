@@ -5,4 +5,10 @@
     <string name="retry">Retry</string>
     <string name="loading">Loading</string>
     <string name="mars_photo">Mars photo</string>
+    <string name="add_button">Añadir producto</string>
+    <string name="product_quantity">Cantidad</string>
+    <string name="product_name">Nombre</string>
+    <string name="product_barcode">Código de barras</string>
+    <string name="open_barcode_scanner_description">Abrir escáner</string>
+    <string name="product_expire_data">Fecha de caducidad</string>
 </resources>

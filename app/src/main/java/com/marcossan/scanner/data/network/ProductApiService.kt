@@ -1,6 +1,7 @@
-package com.marcossan.scanner.network
+package com.marcossan.scanner.data.network
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.marcossan.scanner.domain.model.Product
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
@@ -18,15 +19,18 @@ private val retrofit = Retrofit.Builder()
 interface ProductApiService {
 
     @GET("product/{barcode}.json")
-//    suspend fun getPhotos(): List<MarsPhoto>
     suspend fun getProduct(
         @Path("barcode")
         barcode: String
+    ): ProductJson
+
+    @GET("product/{barcode}.json")
+    suspend fun getProductDomain(
+        @Path("barcode")
+        barcode: String
     ): Product
-//    suspend fun getPhotos(): String
 
-
-    object MarsApi {
+    object OpenFoodFactsApi {
         val retrofitService: ProductApiService by lazy {
             retrofit.create(ProductApiService::class.java)
         }

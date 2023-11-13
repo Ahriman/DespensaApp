@@ -1,12 +1,9 @@
 package com.marcossan.scanner.ui.navigation
 
 sealed class Screens(val route: String){
-//    object MainScreen: Screens("initial_screen")
-    object MenuScreen: Screens("menu_screen")
-
-    object ScannerScreen: Screens("scanner_screen")
-    object MarsPhotosApp: Screens("mars_photos_app_screen")
-
-//    object ProductScreen: Screens("product_screen")
+    data object MainScreen: Screens("main_screen")
+    data object AddProductScreen: Screens("scanner_screen/{barcode}")
+    data object ScannerApp: Screens("scanner/{barcode}")
+    data object ProductScreen: Screens("product_screen")
 
 }

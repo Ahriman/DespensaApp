@@ -9,10 +9,11 @@
 <!--    <uses-permission android:name="android.permission.CAMERA" />-->
 
 <!--    android:enableOnBackInvokedCallback="true"-->
+<!--    android:name=".ScannerApp"-->
     <application
-
+        android:enableOnBackInvokedCallback="true"
         android:allowBackup="true"
-        android:name=".DespensaApp"
+
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"

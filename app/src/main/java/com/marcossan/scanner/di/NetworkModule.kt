@@ -13,8 +13,8 @@ import javax.inject.Singleton
 private const val COUNTRY_CODE = "es"
 private const val BASE_URL = "https://$COUNTRY_CODE.openfoodfacts.org/api/v0/"
 
-@Module
-@InstallIn(SingletonComponent::class)
+//@Module
+//@InstallIn(SingletonComponent::class)
 class NetworkModule {
 
     @Singleton

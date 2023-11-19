@@ -3,7 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.serialization") version "1.9.20"
 //    id("kotlin-kapt")
-    id("com.google.devtools.ksp")
+    id("com.google.devtools.ksp") version "1.9.20-1.0.14"
 //    id("com.google.dagger.hilt.android")
 }
 
@@ -87,7 +87,7 @@ dependencies {
     // Import the Compose BOM
     implementation(platform("androidx.compose:compose-bom:2023.06.01"))
     implementation("androidx.activity:activity-compose:1.8.0")
-    implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.material3:material3:1.1.2")
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.core:core-ktx:1.12.0")
@@ -140,7 +140,7 @@ dependencies {
 //    ksp("androidx.room:room-compiler:$room_version")
 
     // Dagger Hilt
-    val daggerHiltVersion = "2.44" // 2.44 funciona correctamente
+    val daggerHiltVersion = "2.48.1" // 2.44 funciona correctamente
 //    implementation("com.google.dagger:hilt-android-gradle-plugin:2.44")
 //    implementation 'com.google.dagger:hilt-android:$daggerHiltVersion'
 //    annotationProcessor 'com.google.dagger:hilt-compiler:2.48.1'

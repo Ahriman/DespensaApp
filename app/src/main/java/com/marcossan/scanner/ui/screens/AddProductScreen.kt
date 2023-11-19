@@ -15,16 +15,25 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material3.Button
+import androidx.compose.material3.DatePicker
+import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -42,6 +51,8 @@ import com.marcossan.scanner.data.model.Product
 import com.marcossan.scanner.ui.navigation.Screens
 import com.marcossan.scanner.ui.viewmodel.ProductViewModel
 import kotlinx.coroutines.launch
+import java.time.Instant
+import java.time.ZoneId
 import java.util.Calendar
 
 @Composable
@@ -208,7 +219,86 @@ fun ScanBarcode(
 
                     Spacer(modifier = modifier.padding(5.dp))
 
-                    MyDatePicker(productViewModel = productViewModel, modifier = modifier)
+                    val state = rememberDatePickerState()
+                    var showDialog by remember {
+                        mutableStateOf(false)
+                    }
+
+//                    Button(onClick = { showDialog = true }) {
+//                        Text(text = "Mostrar fecha")
+//                    }
+                    if (showDialog) {
+
+
+
+                        DatePickerDialog(
+                            onDismissRequest = {
+                                showDialog = false
+                            },
+                            confirmButton = {
+                                Button(onClick = { showDialog = false }) {
+                                    Text(text = "Confirmar")
+                                }
+                            },
+                            dismissButton = {
+                                OutlinedButton(onClick = { showDialog = false }) {
+                                    Text(text = "Cancelar")
+                                }
+                            }
+                        ) {
+                            // TODO:
+                            val dateExpired: String
+                            val date = state.selectedDateMillis
+                            date.let {
+                                val localDate = Instant.ofEpochMilli(it ?: 0).atZone(ZoneId.of("UTC")).toLocalDate()
+                                dateExpired = "${localDate.dayOfMonth}/${localDate.monthValue}/${localDate.year}"
+                                productViewModel.onProductExpireDateChange(dateExpired)
+                            }
+                            DatePicker(state = state)
+                        }
+                    }
+
+
+
+                    Row(
+                        modifier
+                            .padding(vertical = 8.dp, horizontal = 10.dp)
+                            .clickable {
+                                showDialog = true
+                            },
+                        horizontalArrangement = Arrangement.SpaceEvenly,
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        OutlinedTextField(
+                            value = productViewModel.productExpireDate,
+                            onValueChange = { productExpireDate ->
+                                productViewModel.onProductExpireDateChange(
+                                    productExpireDate
+                                )
+                            },
+//                            readOnly = true,
+                            modifier = Modifier.weight(0.8f),
+                            label = { Text(text = stringResource(R.string.product_expire_data)) },
+                            trailingIcon = {
+                                Icon(
+                                    imageVector = Icons.Filled.DateRange,
+                                    contentDescription = null,
+                                    modifier = Modifier
+                                        .size(24.dp)
+//                        .padding(4.dp)
+                                        .clickable {
+                                            showDialog = true
+                                        }
+                                )
+                            },
+                            keyboardOptions = KeyboardOptions(
+                                capitalization = KeyboardCapitalization.Sentences
+                            ),
+                            singleLine = true,
+                        )
+                    }
+
+//                    MyDatePicker(productViewModel = productViewModel, modifier = modifier)
 
                     Spacer(modifier = modifier.padding(5.dp))
 

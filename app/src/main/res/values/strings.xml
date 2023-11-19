@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Scanner</string>
+    <string name="app_name">Despensa</string>
     <string name="loading_failed">Failed to load</string>
     <string name="placeholder_result">Placeholder result text</string>
     <string name="retry">Retry</string>

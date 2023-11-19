@@ -15,6 +15,7 @@
  */
 package com.marcossan.scanner.ui.viewmodel
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -29,7 +30,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.serialization.MissingFieldException
 import java.io.StringReader
+import java.time.Instant
 import java.time.LocalDateTime
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
@@ -119,6 +122,16 @@ class ProductViewModel @Inject constructor(): ViewModel() {
     }
 
     fun onProductExpireDateChange(productExpireDate: String) {
+//        _productExpireDate = productExpireDate
+
+
+
+//        val dateExpired: String
+//        productExpireDate.let {
+//            val localDate = Instant.ofEpochMilli(it ?: 0).atZone(ZoneId.of("UTC")).toLocalDate()
+//            dateExpired = "${localDate.dayOfMonth}/${localDate.monthValue}/${localDate.year}"
+//
+//        }
         _productExpireDate = productExpireDate
     }
 

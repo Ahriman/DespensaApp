@@ -30,10 +30,10 @@ class BarcodeScanner(
             scanner.startScan()
                 .addOnSuccessListener { barcode ->
                     // Task completed successfully
-//                    barCodeResults.value = barcode.displayValue // TODO: Sobra
+//                    barCodeResults.value = barcode.displayValue
                     productViewModel.onScannedBarcode(barcode = barcode.displayValue.toString())
                     navController.navigate(route = "scanner_screen/${barcode.displayValue.toString()}")
-//                    navController.navigate(route = Screens.ScannerScreen.route) // TODO: Enviar a página AÑADIR PRODUCTO
+//                    navController.navigate(route = Screens.ScannerScreen.route)
                 }
                 .addOnCanceledListener {
                     // Task cancelled

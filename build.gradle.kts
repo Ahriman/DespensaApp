@@ -5,15 +5,15 @@ plugins {
     id("org.jetbrains.kotlin.android") version "1.9.20" apply false
 //    kotlin("kapt") version "1.9.20"
 //    kotlin("jvm") version "1.9.20" apply false
-    id("com.google.devtools.ksp") version "1.9.20-1.0.14" apply false
-    id("com.google.dagger.hilt.android") version "2.48.1" apply false
+//    id("com.google.devtools.ksp") version "1.9.20-1.0.14" apply false
+//    id("com.google.devtools.ksp")
+//    id("com.google.dagger.hilt.android") version "2.48.1" apply false
 }
 
 tasks.register(name = "clean", type = Delete::class) {
 //    delete(rootProject.buildDir)
     delete(layout.buildDirectory)
 }
-
 
 //task clean(type: Delete) {
 //    delete rootProject.buildDir

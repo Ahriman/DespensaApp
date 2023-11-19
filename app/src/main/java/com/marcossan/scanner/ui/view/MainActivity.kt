@@ -11,7 +11,7 @@ import com.marcossan.scanner.ui.navigation.Navigation
 import com.marcossan.scanner.ui.theme.ScannerTheme
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
+//@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
